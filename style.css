@@ -21,7 +21,7 @@ body {
     align-items: center; /* تمركز العناصر عموديًا */
     margin: 0; /* إزالة الهامش الافتراضي */
     padding-top: 120px; /* مسافة من الأعلى */
-    background-image: url('nnnnn.jpeg'); /* داله استدعاء صورة*/
+    background-image: url('Assets/nnnnn.jpeg'); /* داله استدعاء صورة*/
     background-size: cover;  /* تجعل الصورة تغطي كل الصفحة */
     background-position: center; /* تمركز الصورة */
     background-repeat: no-repeat; /* تمنع تكرار الصورة */
