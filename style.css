@@ -1,0 +1,307 @@
+@import url('https://fonts.cdnfonts.com/css/satoshi'); /* استيراد خط Satoshi من الإنترنت */
+
+* {
+    box-sizing: border-box; /* يجعل الحسابات تشمل padding و border */
+    -webkit-font-smoothing: antialiased; /* تحسين وضوح الخطوط في المتصفحات */
+    text-rendering: optimizeLegibility; /* تحسين قابلية قراءة النصوص */
+    scroll-behavior: smooth; /* تمرير سلس عند التنقل داخل الصفحة */
+}
+
+html,
+body {
+    height: 100%; /* ارتفاع الصفحة بالكامل */
+}
+
+body {
+    display: flex; /* استخدام flexbox لترتيب العناصر */
+    flex-direction: row; /* ترتيب العناصر أفقيًا */
+    flex-wrap: wrap; /* السماح بالالتفاف إذا احتاجت العناصر */
+    flex-wrap: nowrap; /* إلغاء الالتفاف (السطر الثاني يلغي الأول) */
+    justify-content: center; /* تمركز العناصر أفقيًا */
+    align-items: center; /* تمركز العناصر عموديًا */
+    margin: 0; /* إزالة الهامش الافتراضي */
+    padding-top: 120px; /* مسافة من الأعلى */
+    background-image: url('nnnnn.jpeg'); /* داله استدعاء صورة*/
+    background-size: cover;  /* تجعل الصورة تغطي كل الصفحة */
+    background-position: center; /* تمركز الصورة */
+    background-repeat: no-repeat; /* تمنع تكرار الصورة */
+    margin: 0;
+    font-family: Arial, sans-serif;
+    font-family: 'Satoshi', sans-serif; /* استخدام الخط المستورد */
+
+    --scale: clamp(200px, 22vw, 300px); /* متغير لضبط حجم الكروت حسب حجم الشاشة */
+}
+
+.card {
+    --clr: #7da072; /* لون خلفية الكرت الافتراضي */
+    --fclr: #f0ffe2; /* لون النص الافتراضي */
+
+    &:nth-child(2) {
+        --clr: #2e2e2e; /* لون خلفية الكرت الثاني */
+        --fclr: #fefefe; /* لون النص للكرت الثاني */
+    }
+
+    &:nth-child(3) {
+        --clr: #fff; /* لون خلفية الكرت الثالث */
+        --fclr: #000; /* لون النص للكرت الثالث */
+    }
+
+    width: var(--scale); /* عرض الكرت حسب المتغير */
+    height: 364px; /* ارتفاع ثابت للكرت */
+    min-width: var(--scale); /* الحد الأدنى للعرض */
+    background: var(--clr); /* لون الخلفية */
+    border-radius: 8px; /* زوايا الكرت مدورة */
+    box-shadow: -8px -8px 24px 0 rgba(81, 0, 255, 0.8),
+    1px 1px 3px 0px #0002,
+    12px 42px 24px -8px #0001,
+    10px 24px 42px 0 #0001,
+    1px 4px 12px 0 #0002; /* ظلال الكرت لإعطاء عمق */
+
+    &:nth-child(1) {
+        box-shadow:
+            -8px -8px 24px 0 rgba(221, 0, 0, 0.767),
+            1px 1px 3px 0px #7da07277,
+            12px 42px 24px -8px #7da07233,
+            10px 24px 42px 0 #7da07233,
+            1px 4px 12px 0 #7da07244; /* ظلال مخصصة للكرت الأول */
+    }
+
+    &:nth-child(2) {
+        box-shadow:
+            -8px -8px 24px 0 rgba(255, 255, 255, 0.8),
+            1px 1px 3px 0px #0006,
+            12px 42px 24px -8px #0003,
+            10px 24px 42px 0 #0003,
+            1px 4px 12px 0 #0006; /* ظلال مخصصة للكرت الثاني */
+    }
+
+    position: relative; /* لتحديد مواقع العناصر الداخلية بشكل نسبي */
+    display: flex; /* عرض داخلي باستخدام Flexbox */
+    flex-direction: column; /* ترتيب المحتوى عموديًا */
+    justify-content: end; /* محاذاة المحتوى لأسفل الكرت */
+    align-items: center; /* محاذاة المحتوى في الوسط أفقيًا */
+    cursor: pointer; /* مؤشر الفأرة يتحول ليد عند المرور */
+    margin: auto 24px; /* مسافة جانبية 24px والوسط تلقائي */
+
+    .content {
+        position: relative; /* موقع نسبي */
+        z-index: 1; /* فوق العناصر الأخرى */
+        bottom: 0; 
+        top: unset;
+        height: fit-content; /* ارتفاع محتوى الكرت حسب المحتوى */
+        padding: 12px 24px; /* حشوة داخلية */
+
+        h2,
+        p {
+            margin: 0; /* إزالة المسافات الافتراضية */
+            padding: 0;
+            line-height: 124%; /* ارتفاع السطر */
+            margin-bottom: 8px; /* مسافة أسفل العنصر */
+            font-weight: 700; /* وزن الخط عريض */
+            color: var(--fclr); /* لون النص حسب المتغير */
+        }
+
+        p {
+            font-weight: 500; /* وزن النص أخف للفقرات */
+            margin-bottom: 16px; /* مسافة أسفل الفقرة */
+        }
+
+        .options {
+            position: absolute; /* تحديد مكانها بشكل مطلق */
+            display: flex; /* عرض العناصر بشكل أفقي */
+            gap: 4px; /* مسافة بين العناصر */
+            bottom: 8px; /* مسافة من أسفل الكرت */
+            right: 12px; /* مسافة من يمين الكرت */
+
+            >div {
+                cursor: pointer; /* مؤشر يد */
+                width: 24px; /* عرض العنصر */
+                height: 16px; /* ارتفاع العنصر */
+                border-radius: 4px; /* زوايا دائرية صغيرة */
+                background: white; /* خلفية بيضاء */
+                border: 1px solid rgba(28, 11, 11, 0.533); /* حدود شفافة */
+                transition: border 0.1s ease-in-out; /* تأثير الانتقال عند التحريك */
+
+                &:hover {
+                    border: 1px solid #fff; /* تغيير الحدود عند المرور */
+                }
+            }
+        }
+    }
+
+    .glass {
+        pointer-events: none; /* لا تمنع التفاعل مع العناصر الأخرى */
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%; /* تغطي عرض الكرت */
+        height: 80%; /* تغطي 80% من ارتفاع الكرت */
+        background: linear-gradient(transparent, var(--clr) 80%); /* تأثير الزجاج تدريجي */
+        border-bottom-right-radius: 8px; 
+        border-bottom-left-radius: 8px;
+        overflow: hidden;
+    }
+
+    .overflow {
+        pointer-events: none; /* لا تتداخل مع الفأرة */
+        position: absolute;
+        width: 200%; /* ضعف عرض الكرت */
+        height: 200%; /* ضعف ارتفاع الكرت */
+        overflow: hidden; 
+        display: flex;
+        justify-content: end; /* محاذاة المحتوى لليمين */
+        align-items: end; /* محاذاة المحتوى لأسفل */
+        clip-path: polygon(0 0, 100% 0, 100% 60%, 75% 60%, 75% 100%, 25% 100%, 25% 60%, 0 60%); /* شكل القطع */
+    }
+
+    .model {
+        position: absolute; /* موضع نسبي للكرت */
+        width: 100%;
+        height: 100%;
+        bottom: -10%; /* تحريك الكرت لأسفل قليلاً */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        model-viewer {
+            position: absolute;
+            width: 500px; /* حجم النموذج */
+            height: 500px;
+            width: 500px;
+            height: calc((5/3) * var(--scale)); /* ضبط الارتفاع حسب عرض الكرت */
+            --progress-bar-color: none; /* إخفاء شريط التقدم */
+            --progress-bar-height: 0px;
+            opacity: 0; /* يختفي عند البداية */
+            transition: filter 0.4s ease-in-out; /* تأثير الانتقال عند التغيير */
+
+            &.loaded {
+                animation: onLoad 1s ease-in forwards; /* ظهور تدريجي عند تحميل النموذج */
+            }
+        }
+    }
+
+    @media (max-width: 700px) {
+        &:nth-child(3) {
+            display: none; /* إخفاء الكرت الثالث في الشاشات الصغيرة */
+        }
+    }
+
+    @media (max-width: 468px) {
+        &:nth-child(1) {
+            display: none; /* إخفاء الكرت الأول في الشاشات الصغيرة جدًا */
+        }
+    }
+}
+
+@keyframes onLoad {
+    to {
+        opacity: 1; /* ظهور تدريجي للنموذج */
+    }
+}
+
+.gradient-blur {
+    position: absolute; /* موضع مطلق */
+    z-index: 1; /* فوق العناصر الأخرى */
+    height: 100%;
+    inset: auto 0 0 0; /* تحديد موقعها */
+    pointer-events: none; /* لا تتداخل مع الفأرة */
+}
+
+.gradient-blur:nth-child(2) {
+    inset: auto 0;
+}
+
+.gradient-blur>div,
+.gradient-blur::before,
+.gradient-blur::after {
+    position: absolute;
+    inset: 0;
+    --p1: 0%; /* نقاط لتدرج الضباب */
+    --p2: 12.5%;
+    --p3: 25%;
+    --p4: 37.5%;
+    --p5: 50%;
+    --p6: 62.5%;
+    --p7: 75%;
+    --p8: 87.5%;
+    --p9: 100%;
+}
+
+.gradient-blur::before {
+    content: "";
+    z-index: 1;
+    backdrop-filter: blur(0.5px); /* ضباب خفيف */
+    mask: linear-gradient(to bottom,
+            rgba(149, 22, 22, 0) var(--p1),
+            rgba(0, 0, 0, 1) var(--p2),
+            rgba(0, 0, 0, 1) var(--p3),
+            rgba(0, 0, 0, 0) var(--p4)); /* تدرج الضباب */
+}
+
+.gradient-blur>div:nth-of-type(1) {
+    z-index: 2;
+    backdrop-filter: blur(1px); /* ضباب أقوى */
+    mask: linear-gradient(to bottom,
+            rgba(0, 0, 0, 0) var(--p2),
+            rgba(0, 0, 0, 1) var(--p3),
+            rgba(0, 0, 0, 1) var(--p4),
+            rgba(0, 0, 0, 0) var(--p5));
+}
+
+.gradient-blur>div:nth-of-type(2) {
+    z-index: 3;
+    backdrop-filter: blur(2px);
+    mask: linear-gradient(to bottom,
+            rgba(0, 0, 0, 0) var(--p3),
+            rgba(0, 0, 0, 1) var(--p4),
+            rgba(0, 0, 0, 1) var(--p5),
+            rgba(0, 0, 0, 0) var(--p6));
+}
+
+.gradient-blur>div:nth-of-type(3) {
+    z-index: 4;
+    backdrop-filter: blur(4px);
+    mask: linear-gradient(to bottom,
+            rgba(0, 0, 0, 0) var(--p4),
+            rgba(0, 0, 0, 1) var(--p5),
+            rgba(0, 0, 0, 1) var(--p6),
+            rgba(0, 0, 0, 0) var(--p7));
+}
+
+.gradient-blur>div:nth-of-type(4) {
+    z-index: 5;
+    backdrop-filter: blur(8px);
+    mask: linear-gradient(to bottom,
+            rgba(0, 0, 0, 0) var(--p5),
+            rgba(0, 0, 0, 1) var(--p6),
+            rgba(0, 0, 0, 1) var(--p7),
+            rgba(0, 0, 0, 0) var(--p8));
+}
+
+.gradient-blur>div:nth-of-type(5) {
+    z-index: 6;
+    backdrop-filter: blur(16px);
+    mask: linear-gradient(to bottom,
+            rgba(0, 0, 0, 0) var(--p6),
+            rgba(0, 0, 0, 1) var(--p7),
+            rgba(0, 0, 0, 1) var(--p8),
+            rgba(0, 0, 0, 0) var(--p9));
+}
+
+.gradient-blur>div:nth-of-type(6) {
+    z-index: 7;
+    backdrop-filter: blur(32px);
+    mask: linear-gradient(to bottom,
+            rgba(0, 0, 0, 0) var(--p7),
+            rgba(0, 0, 0, 1) var(--p8),
+            rgba(0, 0, 0, 1) var(--p9));
+}
+
+.gradient-blur::after {
+    content: "";
+    z-index: 8;
+    backdrop-filter: blur(64px); /* ضباب أقوى في الأعلى */
+    mask: linear-gradient(to bottom,
+            rgba(0, 0, 0, 0) var(--p8),
+            rgba(0, 0, 0, 1) var(--p9));
+}
